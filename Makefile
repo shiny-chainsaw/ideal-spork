@@ -3,13 +3,7 @@
 all : clean venv/bin/activate requirements.txt test run
 
 clean : 
-	find . -path './venv' -prune \
-		-o \( -name '*.egg-info' \
-		-o -name '*.pyc' \
-		-o -name '*.pyo' \
-		-o -name '__pycache__' \
-		-o -name '.pytest_cache' \) \
-		-exec rm -rf {} +
+	git clean -dx --exclude=.idea/ --exclude=venv/ --force
 
 distclean :
 	git reset --hard
