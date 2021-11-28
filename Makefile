@@ -23,4 +23,7 @@ black :
 	venv/bin/black .
 
 run : requirements.txt
-	$(error This target has not been implemented)
+	venv/bin/gunicorn "api:create_app()" \
+ 		--bind 0.0.0.0:5000 \
+ 		--threads 4 \
+ 		--workers 2
